@@ -1,4 +1,4 @@
-import { TokenStore } from './token-store.type'
+import { ActionStepTokenStore } from './action-step-token-store.type'
 
 export type ActionStepClientConfig = {
   client_id: string
@@ -13,5 +13,5 @@ export type ActionStepClientConfig = {
    * @param expirationWindowSeconds Window of time before the actual expiration to refresh the token. Defaults to 0.
    */
   expirationWindowSeconds?: number
-  store?: TokenStore
+  store?: ActionStepTokenStore
 }

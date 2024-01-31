@@ -1,7 +1,11 @@
-import { AccessToken, AuthorizationCode, Token } from 'simple-oauth2'
+import { AccessToken, AuthorizationCode } from 'simple-oauth2'
 import { ActionStepClientConfig } from './types/action-step-client-config.type'
+import { ActionStepAuth } from './types/action-step-auth.type'
+import { ActionStepToken } from './types/action-step-token.type'
 
-export const ActionStepAuth = (config: ActionStepClientConfig) => {
+export const actionStepAuth = (
+  config: ActionStepClientConfig,
+): ActionStepAuth => {
   const {
     client_id,
     client_secret,
@@ -36,28 +40,29 @@ export const ActionStepAuth = (config: ActionStepClientConfig) => {
         scope,
       })
     },
-    callback: async (code: string): Promise<Token> => {
+    callback: async (code: string): Promise<ActionStepToken> => {
       accessToken = await authCode.getToken({
         code,
         redirect_uri,
         scope,
       })
 
-      if (store) await store.set(accessToken.token)
+      const actionStepToken = <ActionStepToken>accessToken.token
+      if (store) await store.set(actionStepToken)
 
-      return accessToken.token
+      return actionStepToken
     },
-    token: async (): Promise<Token> => {
+    token: async (): Promise<ActionStepToken> => {
       if (store) {
         accessToken = authCode.createToken(await store.get())
       }
 
       if (accessToken.expired()) {
         accessToken = await accessToken.refresh()
-        if (store) await store.set(accessToken.token)
+        if (store) await store.set(<ActionStepToken>accessToken.token)
       }
 
-      return accessToken.token
+      return <ActionStepToken>accessToken.token
     },
   }
 }
