@@ -5,9 +5,13 @@ export type ActionStepClientConfig = {
   client_secret: string
   authorize_url: string
   token_url: string
+  scope?: string | string[] | undefined
+  redirect_uri: string
 }
 
-export const createAuthorizationCode = (config: ActionStepClientConfig) => {
+export type HandleCallbackOptions = { code: string }
+
+export const ActionStepAuth = (config: ActionStepClientConfig) => {
   const authorizeURL = new URL(config.authorize_url)
   const tokenURL = new URL(config.token_url)
 
@@ -25,5 +29,23 @@ export const createAuthorizationCode = (config: ActionStepClientConfig) => {
     http: { json: 'force' },
   })
 
-  return authCode
+  return {
+    authorizeURL: () => {
+      return authCode.authorizeURL({
+        redirect_uri: config.redirect_uri,
+        scope: config.scope,
+      })
+    },
+    handleCallback: async ({ code }: HandleCallbackOptions) => {
+      const { token } = await authCode.getToken({
+        code,
+        redirect_uri: config.redirect_uri,
+        scope: config.scope,
+      })
+
+      // TODO: Store token
+
+      return token
+    },
+  }
 }
