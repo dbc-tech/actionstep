@@ -2,6 +2,7 @@ import { AccessToken, AuthorizationCode } from 'simple-oauth2'
 import { ActionStepClientConfig } from './types/action-step-client-config.type'
 import { ActionStepAuth } from './types/action-step-auth.type'
 import { ActionStepToken } from './types/action-step-token.type'
+import { toActionStepToken } from './utils/to-action-step-token'
 
 export const actionStepAuth = (
   config: ActionStepClientConfig,
@@ -47,7 +48,7 @@ export const actionStepAuth = (
         scope,
       })
 
-      const actionStepToken = <ActionStepToken>accessToken.token
+      const actionStepToken = toActionStepToken(accessToken.token)
       if (store) await store.set(actionStepToken)
 
       return actionStepToken
@@ -59,10 +60,10 @@ export const actionStepAuth = (
 
       if (accessToken.expired()) {
         accessToken = await accessToken.refresh()
-        if (store) await store.set(<ActionStepToken>accessToken.token)
+        if (store) await store.set(toActionStepToken(accessToken.token))
       }
 
-      return <ActionStepToken>accessToken.token
+      return toActionStepToken(accessToken.token)
     },
   }
 }
