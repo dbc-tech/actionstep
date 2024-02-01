@@ -1,5 +1,5 @@
 {
-  "name": "@dbc-tech/actionstep-client",
+  "name": "@dbc-tech/actionstep",
   "version": "1.0.0",
   "description": "ActionStep API integration",
   "repository": "https://github.com/dbc-tech/actionstep",
@@ -15,8 +15,7 @@
     "lint": "eslint . --fix",
     "test": "jest",
     "test:debug": "jest --runInBand --no-cache",
-    "build": "rimraf ./dist && tsc --build tsconfig.build.json",
-    "build:pack": "yarn run build && yarn pack"
+    "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
   "dependencies": {
     "simple-oauth2": "^5.0.0"
@@ -37,7 +36,6 @@
     "ts-jest": "^29.1.2",
     "typescript": "^5.3.3"
   },
-  "packageManager": "yarn@1.22.19",
   "jest": {
     "testEnvironment": "node",
     "preset": "ts-jest"
