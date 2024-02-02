@@ -1,7 +1,7 @@
 {
-  "name": "@dbc-tech/actionstep",
+  "name": "@dbc-tech/actionstep-auth-function",
   "version": "1.3.0",
-  "description": "ActionStep API integration",
+  "description": "ActionStep API integration - Azure Function (Auth)",
   "repository": "https://github.com/dbc-tech/actionstep",
   "author": "DBC",
   "private": false,
@@ -18,7 +18,8 @@
     "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
   "dependencies": {
-    "simple-oauth2": "^5.0.0"
+    "@azure/functions": "^4.0.0",
+    "@dbc-tech/actionstep": "^1.2.0"
   },
   "devDependencies": {
     "@golevelup/ts-jest": "^0.4.0",

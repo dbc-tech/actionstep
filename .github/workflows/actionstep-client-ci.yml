@@ -1,11 +1,12 @@
-name: CI
+name: ActionStep Client CI
 
 on:
   push:
-    branches:
-    - "**"
+    branches: ["**"]
+    paths: "actionstep-client/**"
   pull_request:
-    branches: [ main ]
+    branches: [main]
+    paths: "actionstep-client/**"
 
 defaults:
   run:
@@ -14,7 +15,6 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
