@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:debug": "jest --runInBand --no-cache",
     "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
