@@ -5,7 +5,7 @@ export type ActionStepClientConfig = {
   client_secret: string
   authorize_url: string
   token_url: string
-  scope?: string | string[] | undefined
+  scope?: string | undefined
   redirect_uri: string
 
   /**

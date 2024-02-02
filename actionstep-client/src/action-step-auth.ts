@@ -12,12 +12,12 @@ export const actionStepAuth = (
     client_secret,
     authorize_url,
     token_url,
-    scope,
     redirect_uri,
     store,
   } = config
   const authorizeURL = new URL(authorize_url)
   const tokenURL = new URL(token_url)
+  const scope = config.scope || ''
   let accessToken: AccessToken
 
   const authCode = new AuthorizationCode({
@@ -59,7 +59,7 @@ export const actionStepAuth = (
       }
 
       if (accessToken.expired()) {
-        accessToken = await accessToken.refresh()
+        accessToken = await accessToken.refresh({ scope })
         if (store) await store.set(toActionStepToken(accessToken.token))
       }
 
