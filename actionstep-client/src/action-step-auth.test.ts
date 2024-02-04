@@ -13,6 +13,7 @@ describe('RexClient', () => {
       scope: 'all',
       redirect_uri: 'https://webhook.site/123',
       store: undefined,
+      api_url: 'https://ap-southeast-2.actionstep.com/api/v2',
     })
   })
 

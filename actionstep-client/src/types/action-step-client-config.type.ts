@@ -7,6 +7,7 @@ export type ActionStepClientConfig = {
   token_url: string
   scope?: string | undefined
   redirect_uri: string
+  api_url: string
 
   /**
    * Determines if the current access token is definitely expired or not
