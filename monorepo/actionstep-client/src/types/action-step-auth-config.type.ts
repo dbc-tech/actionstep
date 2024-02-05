@@ -1,6 +1,6 @@
 import { ActionStepTokenStore } from './action-step-token-store.type'
 
-export type ActionStepClientConfig = {
+export type ActionStepAuthConfig = {
   client_id: string
   client_secret: string
   authorize_url: string

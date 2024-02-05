@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@azure/functions": "^4.0.0",
-    "simple-oauth2": "^5.0.0"
+    "simple-oauth2": "^5.0.0",
+    "@dbc-tech/actionstep": "*"
   },
   "devDependencies": {
     "@golevelup/ts-jest": "^0.4.0",

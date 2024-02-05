@@ -3,14 +3,14 @@ name: ActionStep Client CI
 on:
   push:
     branches: ["**"]
-    paths: "actionstep-client/**"
+    paths: "monorepo/actionstep-client/**"
   pull_request:
     branches: [main]
-    paths: "actionstep-client/**"
+    paths: "monorepo/actionstep-client/**"
 
 defaults:
   run:
-    working-directory: ./actionstep-client
+    working-directory: ./monorepo
     shell: bash
 
 jobs:

@@ -1,11 +1,11 @@
 import { AccessToken, AuthorizationCode } from 'simple-oauth2'
-import { ActionStepClientConfig } from './types/action-step-client-config.type'
+import { ActionStepAuthConfig } from './types/action-step-auth-config.type'
 import { ActionStepAuth } from './types/action-step-auth.type'
 import { ActionStepToken } from './types/action-step-token.type'
 import { toActionStepToken } from './utils/to-action-step-token'
 
 export const actionStepAuth = (
-  config: ActionStepClientConfig,
+  config: ActionStepAuthConfig,
 ): ActionStepAuth => {
   const {
     client_id,
@@ -65,5 +65,6 @@ export const actionStepAuth = (
 
       return toActionStepToken(accessToken.token)
     },
+    apiapi_url: config.api_url,
   }
 }

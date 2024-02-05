@@ -18,6 +18,7 @@
     "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
   "dependencies": {
+    "ky": "^1.2.0",
     "simple-oauth2": "^5.0.0"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
-import { ActionStepAuth } from './types/action-step-auth.type'
+import { ActionStepTokenClient } from './types/action-step-auth.type'
 
-export const actionStepClient = (auth: ActionStepAuth) => {
+export const actionStepClient = (auth: ActionStepTokenClient) => {
   return {
     // TODO: Create an internal HTTP client which handles auth / refresh (on 404) by calling auth.token()
     getAction: async (): Promise<void> => {

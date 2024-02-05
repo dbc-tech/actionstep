@@ -3,14 +3,14 @@ name: ActionStep Auth Function CI
 on:
   push:
     branches: ["**"]
-    paths: "actionstep-auth-function/**"
+    paths: "monorepo/actionstep-auth-function/**"
   pull_request:
     branches: [main]
-    paths: "actionstep-auth-function/**"
+    paths: "monorepo/actionstep-auth-function/**"
 
 defaults:
   run:
-    working-directory: ./actionstep-auth-function
+    working-directory: ./monorepo
     shell: bash
 
 jobs:

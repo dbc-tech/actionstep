@@ -7,10 +7,10 @@ on:
 
 jobs:
   
-  actionstep-client-publish:
+  publish-packages:
     defaults:
       run:
-        working-directory: ./actionstep-client
+        working-directory: ./monorepo
         shell: bash
     runs-on: ubuntu-latest
     steps:
@@ -21,24 +21,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
-      - run: npm publish
+      - run: npm publish -w actionstep-client
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-  actionstep-auth-function-publish:
-    defaults:
-      run:
-        working-directory: ./actionstep-auth-function
-        shell: bash
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run build
-      - run: npm publish
+      - run: npm publish -w actionstep-auth-function
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}          
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
