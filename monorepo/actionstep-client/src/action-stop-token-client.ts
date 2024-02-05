@@ -1,5 +1,5 @@
 import ky from 'ky'
-import { ActionStepToken, ActionStepTokenClient } from '../types'
+import { ActionStepToken, ActionStepTokenClient } from './types'
 
 export const actionStepTokenClient = (
   tokenUrl: string,
