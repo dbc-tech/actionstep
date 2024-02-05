@@ -1,4 +1,4 @@
-import ky from 'ky'
+import got from 'got-cjs'
 import { ActionStepToken, ActionStepTokenClient } from './types'
 
 export const actionStepTokenClient = (
@@ -7,7 +7,7 @@ export const actionStepTokenClient = (
 ): ActionStepTokenClient => {
   return {
     token: async () => {
-      return await ky.get(tokenUrl).json<ActionStepToken>()
+      return await got.get(tokenUrl).json<ActionStepToken>()
     },
     apiapi_url: apiUrl,
   }

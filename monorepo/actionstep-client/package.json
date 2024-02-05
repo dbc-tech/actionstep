@@ -1,6 +1,6 @@
 {
   "name": "@dbc-tech/actionstep",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "ActionStep API integration",
   "repository": "https://github.com/dbc-tech/actionstep",
   "author": "DBC",
@@ -18,7 +18,7 @@
     "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
   "dependencies": {
-    "ky": "^1.2.0",
+    "got-cjs": "^12.5.4",
     "simple-oauth2": "^5.0.0"
   },
   "devDependencies": {
