@@ -1,7 +1,7 @@
 import {
+  actionStepClient,
   actionStepLegacyTokenClient,
   actionStepTokenClient,
-  actionsClient,
 } from '@dbc-tech/actionstep'
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -15,24 +15,38 @@ const actionLister = async () => {
     process.env.ACTIONSTEP_TOKEN_URL,
     process.env.ACTIONSTEP_API_URL,
   )
-  const client = actionsClient(tokenClient)
+  const { actions: actionsClient } = actionStepClient(tokenClient)
 
-  // const { actions } = await client.getActions(1, 50)
+  // const { actions } = await actionsClient.getActions(1, 50)
   // for (const action of actions) {
   //   console.log('id:', action.id)
   // }
 
   const testId1 = 68330
   const testId2 = 84407
-  const { actions: action } = await client.getAction(testId1)
-  console.log('action:', JSON.stringify(action))
+  const { data: action, error: getError } =
+    await actionsClient.getAction(testId1)
+  if (getError) console.error('get error:', getError)
+  else
+    console.log('get action:', {
+      id: action.actions.id,
+      name: action.actions.name,
+      reference: action.actions.reference,
+    })
 
-  const { actions: updatedAction } = await client.updateAction(testId1, {
-    actions: {
-      reference: 'TEST04',
-    },
-  })
-  console.log('updated action.reference:', updatedAction.reference)
+  const { data: updatedAction, error: updateError } =
+    await actionsClient.updateAction(testId1, {
+      actions: {
+        reference: 'TEST07',
+      },
+    })
+  if (updateError) console.error('update error:', updateError)
+  else
+    console.log('updated action:', {
+      id: updatedAction.actions.id,
+      name: updatedAction.actions.name,
+      reference: updatedAction.actions.reference,
+    })
 }
 
 actionLister()

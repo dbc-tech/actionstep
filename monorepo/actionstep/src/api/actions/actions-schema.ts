@@ -54,7 +54,7 @@ export interface paths {
         /** @description OK. */
         200: {
           content: {
-            'application/json': components['schemas']['Action']
+            'application/json': components['schemas']['SingleAction']
           }
         }
       }
