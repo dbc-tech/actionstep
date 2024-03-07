@@ -33,7 +33,7 @@ export interface paths {
         /** @description OK. */
         200: {
           content: {
-            'application/json': components['schemas']['Action']
+            'application/json': components['schemas']['SingleAction']
           }
         }
       }
@@ -66,6 +66,11 @@ export type webhooks = Record<string, never>
 
 export interface components {
   schemas: {
+    SingleAction: {
+      actions?: components['schemas']['Action']
+      meta?: components['schemas']['PageMetaData']
+      links?: components['schemas']['ActionsLinks']
+    }
     PagedActions: {
       actions?: components['schemas']['Action'][]
       meta?: components['schemas']['PageMetaData']
