@@ -39,7 +39,7 @@ export interface paths {
       }
     }
     /** @description Update the properties of a Matter. */
-    patch: {
+    put: {
       parameters: {
         path: {
           /**
@@ -80,6 +80,9 @@ export interface components {
     }
     PagingData: {
       actions?: components['schemas']['ActionPageData']
+    }
+    Update: {
+      actions: components['schemas']['UpdateAction']
     }
     ActionPageData: {
       /**
@@ -303,7 +306,7 @@ export interface components {
   requestBodies: {
     UpdateAction?: {
       content: {
-        'application/json': components['schemas']['UpdateAction']
+        'application/json': components['schemas']['Update']
       }
     }
   }

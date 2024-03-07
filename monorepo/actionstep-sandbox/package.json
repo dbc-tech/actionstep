@@ -17,10 +17,13 @@
     "test": "jest",
     "test:debug": "jest --runInBand --no-cache",
     "build": "rimraf ./dist && tsc --build tsconfig.build.json",
-    "run:actions": "npm run start ./src/actions.ts"
+    "run:actions": "npm run start ./src/actions.ts",
+    "run:got": "npm run start ./src/got.ts"
   },
   "dependencies": {
-    "@dbc-tech/actionstep": "*"
+    "@dbc-tech/actionstep": "*",
+    "dotenv": "^16.4.5",
+    "got-cjs": "^12.5.4"
   },
   "devDependencies": {
     "@golevelup/ts-jest": "^0.4.0",
