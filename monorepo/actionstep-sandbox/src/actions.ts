@@ -6,6 +6,30 @@ import {
 import * as dotenv from 'dotenv'
 dotenv.config()
 
+const getActions = async () => {
+  // const tokenClient = actionStepTokenClient(
+  //   process.env.ACTIONSTEP_TOKEN_URL,
+  //   process.env.ACTIONSTEP_API_URL,
+  // )
+  const tokenClient = actionStepLegacyTokenClient(
+    process.env.ACTIONSTEP_TOKEN_URL,
+    process.env.ACTIONSTEP_API_URL,
+  )
+  const { actions: actionsClient } = actionStepClient(tokenClient)
+
+  const { data, error } = await actionsClient.getActions(1, 50)
+  if (error) console.error('error:', error)
+  else {
+    for (const action of data.actions) {
+      console.log('get action:', {
+        id: action.id,
+        name: action.name,
+        reference: action.reference,
+      })
+    }
+  }
+}
+
 const actionLister = async () => {
   // const tokenClient = actionStepTokenClient(
   //   process.env.ACTIONSTEP_TOKEN_URL,
@@ -49,6 +73,6 @@ const actionLister = async () => {
     })
 }
 
-actionLister()
+getActions()
   .then(() => console.log('done'))
   .catch(console.error)
