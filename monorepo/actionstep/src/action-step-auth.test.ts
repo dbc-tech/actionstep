@@ -1,7 +1,7 @@
 import { ActionStepAuth } from './types/action-step-auth.type'
 import { actionStepAuth } from './action-step-auth'
 
-describe('RexClient', () => {
+describe('actionStepAuth', () => {
   let auth: ActionStepAuth
 
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('RexClient', () => {
   })
 
   describe('authorizeUrl', () => {
-    it('should return an array of RexAccountUser objects', async () => {
+    it('should return ActionStep authorize url', async () => {
       // Arrange
       const result = auth.authorizeUrl()
 

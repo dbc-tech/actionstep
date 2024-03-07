@@ -14,8 +14,7 @@
   "scripts": {
     "start": "ts-node",
     "lint": "eslint . --fix",
-    "test": "jest",
-    "test:debug": "jest --runInBand --no-cache",
+    "test": "jest --passWithNoTests",
     "build": "rimraf ./dist && tsc --build tsconfig.build.json",
     "run:actions": "npm run start ./src/actions.ts",
     "run:got": "npm run start ./src/got.ts"
