@@ -1,0 +1,87 @@
+{
+  "links": {
+    "actions.assignedTo": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/participants/{actions.assignedTo}",
+      "type": "participants"
+    },
+    "actions.division": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/divisions/{actions.division}",
+      "type": "divisions"
+    },
+    "actions.actionType": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/actiontypes/{actions.actionType}",
+      "type": "actiontypes"
+    },
+    "actions.primaryParticipants": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/participants/{actions.primaryParticipants}",
+      "type": "participants"
+    },
+    "actions.step": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/steps/{actions.step}",
+      "type": "steps"
+    },
+    "actions.billSettings": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/actionbillsettings/{actions.billSettings}",
+      "type": "actionbillsettings"
+    },
+    "actions.relatedActions": {
+      "href": "https://ap-southeast-2.actionstep.com.actionstep.com/api/rest/actions/{actions.relatedActions}",
+      "type": "actions"
+    }
+  },
+  "actions": {
+    "id": 70151,
+    "name": "AR for Matter 68502 - 62 Owen Street, Dalby QLD 4405 from Kristie Hunt",
+    "reference": null,
+    "priority": 0,
+    "status": "Closed",
+    "statusTimestamp": "2019-08-15T10:23:57+10:00",
+    "isBillableOverride": null,
+    "createdTimestamp": "2019-08-15",
+    "modifiedTimestamp": "2019-08-15T10:23:59+10:00",
+    "isDeleted": "F",
+    "deletedBy": null,
+    "deletedTimestamp": null,
+    "isFavorite": "F",
+    "overrideBillingStatus": null,
+    "lastAccessTimestamp": null,
+    "importExternalReference": null,
+    "amlReviewStatus": "None",
+    "links": {
+      "assignedTo": "21188",
+      "division": "1",
+      "actionType": "33",
+      "primaryParticipants": ["75165"],
+      "step": "33--1",
+      "billSettings": "70151",
+      "relatedActions": ["68502"]
+    }
+  },
+  "meta": {
+    "paging": {
+      "actions": {
+        "recordCount": 1,
+        "pageCount": 1,
+        "page": 1,
+        "pageSize": 50,
+        "prevPage": null,
+        "nextPage": null
+      }
+    },
+    "debug": {
+      "requestTime": "0.095070",
+      "mem": "1.36mb",
+      "server": "app-18904ca80ec3426ca66616cd6dbcecc51020546733.ap-southeast-2.actionstep.com",
+      "cb": "T16-137-0",
+      "time": "2024-02-08 18:47:50 +1100 (Australia/Melbourne)",
+      "appload": "0.17, 0.20, 0.25",
+      "app": "0.032885",
+      "db": "0.062185",
+      "dbc": "0.010668",
+      "qc": "49",
+      "uqc": "36",
+      "fc": "995",
+      "rl": null
+    }
+  }
+}
