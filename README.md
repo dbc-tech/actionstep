@@ -29,6 +29,8 @@ Two token clients are provided: `actionStepTokenClient` and `actionStepLegacyTok
 Either way, create an instance of your token client and pass in the url of the service which is providing the token, and the ActionStep API URL:
 
 ```ts
+import { actionStepTokenClient } from '@dbc-tech/actionstep'
+
 const tokenClient = actionStepTokenClient(
   process.env.ACTIONSTEP_TOKEN_URL,
   process.env.ACTIONSTEP_API_URL,
@@ -40,6 +42,8 @@ const tokenClient = actionStepTokenClient(
 With the token client you can now create an instance of the `actionStepClient`:
 
 ```ts
+import { actionStepTokenClient, actionStepClient } from '@dbc-tech/actionstep'
+
 const client = actionStepClient(tokenClient)
 ```
 
@@ -68,6 +72,10 @@ else {
 ```
 
 As a response could contain an error, it is important first to check the error status. **Note:** `data` and `error` are mutually exclusive. If there is no error then the data shape will match that described in the API documentation. In this case an array of actions is found under the `actions` property.
+
+### Testing endpoints
+
+A sandbox project is available to test individual endpoints. See [readme](monorepo/actionstep-sandbox/README.md) for more information.
 
 ## Building Source
 

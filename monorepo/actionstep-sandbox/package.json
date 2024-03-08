@@ -16,8 +16,8 @@
     "lint": "eslint . --fix",
     "test": "jest --passWithNoTests",
     "build": "rimraf ./dist && tsc --build tsconfig.build.json",
-    "run:actions": "npm run start ./src/actions.ts",
-    "run:got": "npm run start ./src/got.ts"
+    "runner": "npm run start ./src/runner.ts",
+    "got": "npm run start ./src/got.ts"
   },
   "dependencies": {
     "@dbc-tech/actionstep": "*",
