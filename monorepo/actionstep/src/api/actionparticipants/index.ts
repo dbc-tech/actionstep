@@ -1,9 +1,9 @@
-export * from './actionparticipants-schema'
+export * from './actionparticipants.schema'
 
 import createClient from 'openapi-fetch'
 import { authMiddleware } from '../auth-middleware'
 import { ActionStepTokenClient } from '../../types'
-import { ActionParticipants } from './actionparticipants-schema'
+import { ActionParticipants } from './actionparticipants.schema'
 
 export type PagedActionParticipantsSuccessResponse =
   ActionParticipants.paths['/actionparticipants']['get']['responses'][200]['content']['application/json']
@@ -23,7 +23,7 @@ export const getActionParticipants = async (
   page: number = 1,
   pageSize: number = 50,
 ) => {
-  return await client.GET('/actionparticipants', {
+  return client.GET('/actionparticipants', {
     params: {
       query: {
         pageSize,
@@ -33,11 +33,20 @@ export const getActionParticipants = async (
   })
 }
 
+export const createActionParticipant = async (
+  client: ActionParticipantsClient,
+  body: ActionParticipantsCreate,
+) => {
+  return client.POST('/actionparticipants', {
+    body,
+  })
+}
+
 export const getActionParticipant = async (
   client: ActionParticipantsClient,
   id: string,
 ) => {
-  return await client.GET('/actionparticipants/{id}', {
+  return client.GET('/actionparticipants/{id}', {
     params: {
       path: {
         id,
@@ -50,21 +59,12 @@ export const deleteActionParticipant = async (
   client: ActionParticipantsClient,
   id: string,
 ) => {
-  return await client.DELETE('/actionparticipants/{id}', {
+  return client.DELETE('/actionparticipants/{id}', {
     params: {
       path: {
         id,
       },
     },
-  })
-}
-
-export const createActionParticipant = async (
-  client: ActionParticipantsClient,
-  body: ActionParticipantsCreate,
-) => {
-  return await client.POST('/actionparticipants', {
-    body,
   })
 }
 
@@ -80,10 +80,10 @@ export const actionParticipantsClient = (
   return {
     getActionParticipants: (page: number = 1, pageSize: number = 50) =>
       getActionParticipants(client, page, pageSize),
+    createActionParticipant: (body: ActionParticipantsCreate) =>
+      createActionParticipant(client, body),
     getActionParticipant: (id: string) => getActionParticipant(client, id),
     deleteActionParticipant: (id: string) =>
       deleteActionParticipant(client, id),
-    createActionParticipant: (action: ActionParticipantsCreate) =>
-      createActionParticipant(client, action),
   }
 }

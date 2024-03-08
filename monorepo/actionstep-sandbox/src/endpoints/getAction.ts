@@ -5,12 +5,13 @@ export const getAction = async (tokenClient: ActionStepTokenClient) => {
 
   const testActionId = 68330 // or 84407
 
-  const { data: action, error } = await client.getAction(testActionId)
+  const { data, error } = await client.getAction(testActionId)
   if (error) console.error('error:', error)
-  else
+  else {
     console.log('get action:', {
-      id: action.actions.id,
-      name: action.actions.name,
-      reference: action.actions.reference,
+      id: data.actions.id,
+      name: data.actions.name,
+      reference: data.actions.reference,
     })
+  }
 }

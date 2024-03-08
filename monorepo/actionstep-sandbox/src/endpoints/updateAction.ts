@@ -5,19 +5,17 @@ export const updateAction = async (tokenClient: ActionStepTokenClient) => {
 
   const testActionId = 68330 // or 84407
 
-  const { data: updatedAction, error } = await client.updateAction(
-    testActionId,
-    {
-      actions: {
-        reference: 'TEST07',
-      },
+  const { data, error } = await client.updateAction(testActionId, {
+    actions: {
+      reference: 'TEST07',
     },
-  )
+  })
   if (error) console.error('error:', error)
-  else
+  else {
     console.log('updated action:', {
-      id: updatedAction.actions.id,
-      name: updatedAction.actions.name,
-      reference: updatedAction.actions.reference,
+      id: data.actions.id,
+      name: data.actions.name,
+      reference: data.actions.reference,
     })
+  }
 }

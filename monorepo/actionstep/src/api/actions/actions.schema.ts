@@ -71,7 +71,6 @@ export namespace Actions {
       SingleAction: {
         actions?: components['schemas']['Action']
         meta?: components['schemas']['PageMetaData']
-        links?: components['schemas']['ActionsLinks']
       }
       PagedActions: {
         actions?: components['schemas']['Action'][]

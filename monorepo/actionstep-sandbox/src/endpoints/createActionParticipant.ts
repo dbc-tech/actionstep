@@ -9,20 +9,20 @@ export const createActionParticipant = async (
   const testParticipantId = 113702
   const testParticipantType = 71
 
-  const { data: createdActionParticipant, error } =
-    await client.createActionParticipant({
-      actionparticipants: {
-        links: {
-          action: testActionId,
-          participant: testParticipantId,
-          participantType: testParticipantType,
-        },
+  const { data, error } = await client.createActionParticipant({
+    actionparticipants: {
+      links: {
+        action: testActionId,
+        participant: testParticipantId,
+        participantType: testParticipantType,
       },
-    })
+    },
+  })
   if (error) console.error('error:', error)
-  else
+  else {
     console.log('created action participant:', {
-      id: createdActionParticipant.actionparticipants.id,
-      number: createdActionParticipant.actionparticipants.participantNumber,
+      id: data.actionparticipants.id,
+      number: data.actionparticipants.participantNumber,
     })
+  }
 }

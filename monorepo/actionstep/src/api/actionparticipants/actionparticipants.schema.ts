@@ -80,7 +80,6 @@ export namespace ActionParticipants {
       SingleActionParticipant: {
         actionparticipants?: components['schemas']['ActionParticipants']
         meta?: components['schemas']['PageMetaData']
-        links?: components['schemas']['ActionParticipantsLinks']
       }
       PagedActionParticipants: {
         actionparticipants?: components['schemas']['ActionParticipants'][]

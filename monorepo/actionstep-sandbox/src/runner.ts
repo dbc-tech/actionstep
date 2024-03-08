@@ -7,6 +7,10 @@ import { getActionParticipants } from './endpoints/getActionParticipants'
 import { getActionParticipant } from './endpoints/getActionParticipant'
 import { createActionParticipant } from './endpoints/createActionParticipant'
 import { deleteActionParticipant } from './endpoints/deleteActionParticipant'
+import { getParticipants } from './endpoints/getParticipants'
+import { getParticipant } from './endpoints/getParticipant'
+import { updateParticipant } from './endpoints/updateParticipant'
+import { createParticipant } from './endpoints/createParticipant'
 dotenv.config()
 
 const runner = async (endpointName: string) => {
@@ -36,6 +40,14 @@ const runner = async (endpointName: string) => {
       return createActionParticipant(tokenClient)
     case 'deleteActionParticipant':
       return deleteActionParticipant(tokenClient)
+    case 'getParticipants':
+      return getParticipants(tokenClient)
+    case 'getParticipant':
+      return getParticipant(tokenClient)
+    case 'updateParticipant':
+      return updateParticipant(tokenClient)
+    case 'createParticipant':
+      return createParticipant(tokenClient)
   }
 }
 

@@ -7,13 +7,12 @@ export const getActionParticipant = async (
 
   const testParticipantId = '113702'
 
-  const { data: actionParticipant, error } =
-    await client.getActionParticipant(testParticipantId)
+  const { data, error } = await client.getActionParticipant(testParticipantId)
   if (error) console.error('error:', error)
   else {
     console.log('get action participant:', {
-      id: actionParticipant.actionparticipants.id,
-      number: actionParticipant.actionparticipants.participantNumber,
+      id: data.actionparticipants.id,
+      number: data.actionparticipants.participantNumber,
     })
   }
 }
