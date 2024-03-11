@@ -1,11 +1,12 @@
-import { ActionStepTokenClient } from './types/action-step-auth.type'
 import {
   actionParticipantsClient,
   actionsClient,
+  dataCollectionRecordValuesClient,
   dataCollectionRecordsClient,
   dataCollectionsClient,
   participantsClient,
 } from './api'
+import { ActionStepTokenClient } from './types/action-step-auth.type'
 
 export const actionStepClient = (tokenClient: ActionStepTokenClient) => {
   return {
@@ -13,6 +14,7 @@ export const actionStepClient = (tokenClient: ActionStepTokenClient) => {
     actionParticipants: actionParticipantsClient(tokenClient),
     dataCollections: dataCollectionsClient(tokenClient),
     dataCollectionRecords: dataCollectionRecordsClient(tokenClient),
+    dataCollectionRecordValues: dataCollectionRecordValuesClient(tokenClient),
     participants: participantsClient(tokenClient),
   }
 }

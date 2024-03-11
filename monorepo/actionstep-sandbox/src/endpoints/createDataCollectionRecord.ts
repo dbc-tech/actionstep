@@ -6,7 +6,7 @@ export const createDataCollectionRecord = async (
   const { dataCollectionRecords: client } = actionStepClient(tokenClient)
 
   const testActionId = 68330
-  const testDataCollectionId = 662
+  const testDataCollectionId = 695
 
   const { data, error } = await client.createDataCollectionRecord({
     datacollectionrecords: {

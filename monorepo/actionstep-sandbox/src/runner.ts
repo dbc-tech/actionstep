@@ -20,6 +20,10 @@ import { getDataCollectionRecords } from './endpoints/getDataCollectionRecords'
 import { getDataCollectionRecord } from './endpoints/getDataCollectionRecord'
 import { createDataCollectionRecord } from './endpoints/createDataCollectionRecord'
 import { deleteDataCollectionRecord } from './endpoints/deleteDataCollectionRecord'
+import { getDataCollectionRecordValues } from './endpoints/getDataCollectionRecordValues'
+import { getDataCollectionRecordValue } from './endpoints/getDataCollectionRecordValue'
+import { createDataCollectionRecordValue } from './endpoints/createDataCollectionRecordValue'
+import { updateDataCollectionRecordValue } from './endpoints/updateDataCollectionRecordValue'
 dotenv.config()
 
 const runner = async (endpointName: string) => {
@@ -75,6 +79,14 @@ const runner = async (endpointName: string) => {
       return createDataCollectionRecord(tokenClient)
     case 'deleteDataCollectionRecord':
       return deleteDataCollectionRecord(tokenClient)
+    case 'getDataCollectionRecordValues':
+      return getDataCollectionRecordValues(tokenClient)
+    case 'getDataCollectionRecordValue':
+      return getDataCollectionRecordValue(tokenClient)
+    case 'createDataCollectionRecordValue':
+      return createDataCollectionRecordValue(tokenClient)
+    case 'updateDataCollectionRecordValue':
+      return updateDataCollectionRecordValue(tokenClient)
   }
 }
 
