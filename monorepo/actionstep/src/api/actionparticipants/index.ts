@@ -72,7 +72,7 @@ export const actionParticipantsClient = (
   tokenClient: ActionStepTokenClient,
 ) => {
   const client = createClient<ActionParticipants.paths>({
-    baseUrl: tokenClient.apiapi_url,
+    baseUrl: tokenClient.api_url,
   })
 
   client.use(authMiddleware(tokenClient))

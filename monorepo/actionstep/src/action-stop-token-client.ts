@@ -9,7 +9,7 @@ export const actionStepTokenClient = (
     token: async () => {
       return await got.get(tokenUrl).json<ActionStepToken>()
     },
-    apiapi_url: apiUrl,
+    api_url: apiUrl,
   }
 }
 
@@ -47,6 +47,6 @@ export const actionStepLegacyTokenClient = (
         token_type: legacyToken.data.actionstep.token_type,
       }
     },
-    apiapi_url: apiUrl,
+    api_url: apiUrl,
   }
 }

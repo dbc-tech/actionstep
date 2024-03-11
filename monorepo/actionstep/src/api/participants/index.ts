@@ -75,7 +75,7 @@ export const updateParticipant = async (
 
 export const participantsClient = (tokenClient: ActionStepTokenClient) => {
   const client = createClient<Participants.paths>({
-    baseUrl: tokenClient.apiapi_url,
+    baseUrl: tokenClient.api_url,
   })
 
   client.use(authMiddleware(tokenClient))

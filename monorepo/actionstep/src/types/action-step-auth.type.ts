@@ -7,7 +7,7 @@ export type ActionStepAuthorizeClient = {
 
 export type ActionStepTokenClient = {
   token: () => Promise<ActionStepToken>
-  apiapi_url: Readonly<string>
+  api_url: Readonly<string>
 }
 
 export type ActionStepAuth = ActionStepAuthorizeClient & ActionStepTokenClient

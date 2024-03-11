@@ -65,6 +65,6 @@ export const actionStepAuth = (
 
       return toActionStepToken(accessToken.token)
     },
-    apiapi_url: config.api_url,
+    api_url: config.api_url,
   }
 }
