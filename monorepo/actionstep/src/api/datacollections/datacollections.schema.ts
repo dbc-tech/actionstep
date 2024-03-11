@@ -191,6 +191,12 @@ export namespace DataCollections {
          */
         actionType?: number
       }
+      CreateDataCollections: {
+        datacollections?: components['schemas']['CreateDataCollection']
+      }
+      UpdateDataCollections: {
+        datacollections?: components['schemas']['UpdateDataCollection']
+      }
       CreateDataCollection: {
         /**
          * @description Name for the data collection.
@@ -281,12 +287,12 @@ export namespace DataCollections {
     requestBodies: {
       CreateDataCollection?: {
         content: {
-          'application/json': components['schemas']['CreateDataCollection']
+          'application/json': components['schemas']['CreateDataCollections']
         }
       }
       UpdateDataCollection?: {
         content: {
-          'application/json': components['schemas']['UpdateDataCollection']
+          'application/json': components['schemas']['UpdateDataCollections']
         }
       }
     }

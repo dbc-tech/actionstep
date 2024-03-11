@@ -9,13 +9,13 @@ export type PagedDataCollectionsSuccessResponse =
   DataCollections.paths['/datacollections']['get']['responses'][200]['content']['application/json']
 
 export type DataCollectionSuccessResponse =
-  DataCollections.paths['/datacollection/{id}']['get']['responses'][200]['content']['application/json']
+  DataCollections.paths['/datacollections/{id}']['get']['responses'][200]['content']['application/json']
 
 export type DataCollectionsCreate =
-  DataCollections.components['schemas']['CreateDataCollection']
+  DataCollections.components['schemas']['CreateDataCollections']
 
 export type DataCollectionsUpdate =
-  DataCollections.components['schemas']['UpdateDataCollection']
+  DataCollections.components['schemas']['UpdateDataCollections']
 
 export type DataCollectionsClient = ReturnType<
   typeof createClient<DataCollections.paths>
@@ -48,7 +48,7 @@ export const getDataCollection = async (
   params?: Record<string, unknown>,
 ) => {
   const query = params || {}
-  return client.GET('/datacollection/{id}', {
+  return client.GET('/datacollections/{id}', {
     params: {
       path: {
         id,
@@ -63,7 +63,7 @@ export const updateDataCollection = async (
   id: number,
   body: DataCollectionsUpdate,
 ) => {
-  return client.PUT('/datacollection/{id}', {
+  return client.PUT('/datacollections/{id}', {
     params: {
       path: {
         id,
@@ -77,7 +77,7 @@ export const deleteDataCollection = async (
   client: DataCollectionsClient,
   id: number,
 ) => {
-  return client.DELETE('/datacollection/{id}', {
+  return client.DELETE('/datacollections/{id}', {
     params: {
       path: {
         id,

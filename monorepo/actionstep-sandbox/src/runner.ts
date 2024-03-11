@@ -12,6 +12,10 @@ import { getParticipant } from './endpoints/getParticipant'
 import { updateParticipant } from './endpoints/updateParticipant'
 import { createParticipant } from './endpoints/createParticipant'
 import { getDataCollections } from './endpoints/getDataCollections'
+import { getDataCollection } from './endpoints/getDataCollection'
+import { createDataCollection } from './endpoints/createDataCollection'
+import { updateDataCollection } from './endpoints/updateDataCollection'
+import { deleteDataCollection } from './endpoints/deleteDataCollection'
 dotenv.config()
 
 const runner = async (endpointName: string) => {
@@ -51,6 +55,14 @@ const runner = async (endpointName: string) => {
       return createParticipant(tokenClient)
     case 'getDataCollections':
       return getDataCollections(tokenClient)
+    case 'getDataCollection':
+      return getDataCollection(tokenClient)
+    case 'createDataCollection':
+      return createDataCollection(tokenClient)
+    case 'updateDataCollection':
+      return updateDataCollection(tokenClient)
+    case 'deleteDataCollection':
+      return deleteDataCollection(tokenClient)
   }
 }
 
