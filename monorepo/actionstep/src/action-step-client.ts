@@ -10,3 +10,5 @@ export const actionStepClient = (tokenClient: ActionStepTokenClient) => {
     participants: participantsClient(tokenClient),
   }
 }
+
+export type ActionStepClient = ReturnType<typeof actionStepClient>
