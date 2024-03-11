@@ -25,13 +25,13 @@ export namespace DataCollections {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['DataCollection']
+              'application/json': components['schemas']['SingleDataCollection']
             }
           }
         }
       }
     }
-    '/datacollection/{id}': {
+    '/datacollections/{id}': {
       /** @description Returns a single data collection. */
       get: {
         parameters: {
@@ -47,7 +47,7 @@ export namespace DataCollections {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['DataCollection']
+              'application/json': components['schemas']['SingleDataCollection']
             }
           }
         }
@@ -68,7 +68,7 @@ export namespace DataCollections {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['DataCollection']
+              'application/json': components['schemas']['SingleDataCollection']
             }
           }
         }
@@ -98,6 +98,10 @@ export namespace DataCollections {
 
   export interface components {
     schemas: {
+      SingleDataCollection: {
+        datacollections?: components['schemas']['DataCollection']
+        meta?: components['schemas']['PageMetaData']
+      }
       PagedDataCollections: {
         datacollections?: components['schemas']['DataCollection'][]
         meta?: components['schemas']['PageMetaData']
