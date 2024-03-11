@@ -55,10 +55,10 @@ const { actions: actionsClient } = actionStepClient(tokenClient)
 
 ### Example
 
-`get actions` reads all actions one page at a time. Specify the page number, and number of items per page.
+`get actions` reads all actions one page at a time. Use params to specify the page number and number of items per page as documented [here](https://docs.actionstep.com/api-requests/).
 
 ```ts
-const { data, error } = await actionsClient.getActions(1, 50)
+const { data, error } = await actionsClient.getActions({ page: 1, pageSize: 50})
 if (error) console.error('error:', error)
 else {
   for (const action of data.actions) {

@@ -8,7 +8,7 @@ import { DataCollections } from './datacollections.schema'
 export type PagedDataCollectionsSuccessResponse =
   DataCollections.paths['/datacollections']['get']['responses'][200]['content']['application/json']
 
-export type DataCollectionSuccessResponse =
+export type DataCollectionsSuccessResponse =
   DataCollections.paths['/datacollections/{id}']['get']['responses'][200]['content']['application/json']
 
 export type DataCollectionsCreate =

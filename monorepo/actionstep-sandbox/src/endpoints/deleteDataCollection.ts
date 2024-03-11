@@ -5,7 +5,7 @@ export const deleteDataCollection = async (
 ) => {
   const { dataCollections: client } = actionStepClient(tokenClient)
 
-  const testDataCollectionId = 629
+  const testDataCollectionId = 662
 
   const response = await client.deleteDataCollection(testDataCollectionId)
   if (response.error) console.error('error:', response.error)
