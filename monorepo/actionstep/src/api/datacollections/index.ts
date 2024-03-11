@@ -23,15 +23,12 @@ export type DataCollectionsClient = ReturnType<
 
 export const getDataCollections = async (
   client: DataCollectionsClient,
-  page: number = 1,
-  pageSize: number = 50,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/datacollections', {
     params: {
-      query: {
-        pageSize,
-        page,
-      },
+      query,
     },
   })
 }
@@ -48,12 +45,15 @@ export const createDataCollection = async (
 export const getDataCollection = async (
   client: DataCollectionsClient,
   id: number,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/datacollection/{id}', {
     params: {
       path: {
         id,
       },
+      query,
     },
   })
 }
@@ -86,7 +86,7 @@ export const deleteDataCollection = async (
   })
 }
 
-export const DataCollectionsClient = (tokenClient: ActionStepTokenClient) => {
+export const dataCollectionsClient = (tokenClient: ActionStepTokenClient) => {
   const client = createClient<DataCollections.paths>({
     baseUrl: tokenClient.api_url,
   })
@@ -94,11 +94,12 @@ export const DataCollectionsClient = (tokenClient: ActionStepTokenClient) => {
   client.use(authMiddleware(tokenClient))
 
   return {
-    getDataCollections: (page: number = 1, pageSize: number = 50) =>
-      getDataCollections(client, page, pageSize),
+    getDataCollections: (params?: Record<string, unknown>) =>
+      getDataCollections(client, params),
     createDataCollection: (body: DataCollectionsCreate) =>
       createDataCollection(client, body),
-    getDataCollection: (id: number) => getDataCollection(client, id),
+    getDataCollection: (id: number, params?: Record<string, unknown>) =>
+      getDataCollection(client, id, params),
     updateDataCollection: (id: number, body: DataCollectionsUpdate) =>
       updateDataCollection(client, id, body),
     deleteDataCollection: (id: number) => deleteDataCollection(client, id),

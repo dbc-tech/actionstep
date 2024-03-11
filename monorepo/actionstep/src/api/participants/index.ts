@@ -23,15 +23,12 @@ export type ParticipantsClient = ReturnType<
 
 export const getParticipants = async (
   client: ParticipantsClient,
-  page: number = 1,
-  pageSize: number = 50,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/participants', {
     params: {
-      query: {
-        pageSize,
-        page,
-      },
+      query,
     },
   })
 }
@@ -48,12 +45,15 @@ export const createParticipant = async (
 export const getParticipant = async (
   client: ParticipantsClient,
   id: number,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/participants/{id}', {
     params: {
       path: {
         id,
       },
+      query,
     },
   })
 }
@@ -81,11 +81,12 @@ export const participantsClient = (tokenClient: ActionStepTokenClient) => {
   client.use(authMiddleware(tokenClient))
 
   return {
-    getParticipants: (page: number = 1, pageSize: number = 50) =>
-      getParticipants(client, page, pageSize),
+    getParticipants: (params?: Record<string, unknown>) =>
+      getParticipants(client, params),
     createParticipant: (body: ParticipantsCreate) =>
       createParticipant(client, body),
-    getParticipant: (id: number) => getParticipant(client, id),
+    getParticipant: (id: number, params?: Record<string, unknown>) =>
+      getParticipant(client, id, params),
     updateParticipant: (id: number, body: ParticipantsUpdate) =>
       updateParticipant(client, id, body),
   }

@@ -5,7 +5,10 @@ export const getActionParticipants = async (
 ) => {
   const { actionParticipants: client } = actionStepClient(tokenClient)
 
-  const { data, error } = await client.getActionParticipants(1, 5)
+  const { data, error } = await client.getActionParticipants({
+    page: 1,
+    pageSize: 5,
+  })
   if (error) console.error('error:', error)
   else {
     for (const participant of data.actionparticipants) {

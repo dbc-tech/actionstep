@@ -20,15 +20,12 @@ export type ActionParticipantsClient = ReturnType<
 
 export const getActionParticipants = async (
   client: ActionParticipantsClient,
-  page: number = 1,
-  pageSize: number = 50,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/actionparticipants', {
     params: {
-      query: {
-        pageSize,
-        page,
-      },
+      query,
     },
   })
 }
@@ -45,12 +42,15 @@ export const createActionParticipant = async (
 export const getActionParticipant = async (
   client: ActionParticipantsClient,
   id: string,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/actionparticipants/{id}', {
     params: {
       path: {
         id,
       },
+      query,
     },
   })
 }
@@ -78,11 +78,12 @@ export const actionParticipantsClient = (
   client.use(authMiddleware(tokenClient))
 
   return {
-    getActionParticipants: (page: number = 1, pageSize: number = 50) =>
-      getActionParticipants(client, page, pageSize),
+    getActionParticipants: (params?: Record<string, unknown>) =>
+      getActionParticipants(client, params),
     createActionParticipant: (body: ActionParticipantsCreate) =>
       createActionParticipant(client, body),
-    getActionParticipant: (id: string) => getActionParticipant(client, id),
+    getActionParticipant: (id: string, params?: Record<string, unknown>) =>
+      getActionParticipant(client, id, params),
     deleteActionParticipant: (id: string) =>
       deleteActionParticipant(client, id),
   }

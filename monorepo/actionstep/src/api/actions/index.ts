@@ -17,25 +17,28 @@ export type ActionsClient = ReturnType<typeof createClient<Actions.paths>>
 
 export const getActions = async (
   client: ActionsClient,
-  page: number = 1,
-  pageSize: number = 50,
+  params?: Record<string, unknown>,
 ) => {
+  const query = params || {}
   return client.GET('/actions', {
     params: {
-      query: {
-        pageSize,
-        page,
-      },
+      query,
     },
   })
 }
 
-export const getAction = async (client: ActionsClient, id: number) => {
+export const getAction = async (
+  client: ActionsClient,
+  id: number,
+  params?: Record<string, unknown>,
+) => {
+  const query = params || {}
   return client.GET('/actions/{id}', {
     params: {
       path: {
         id,
       },
+      query,
     },
   })
 }
@@ -63,9 +66,10 @@ export const actionsClient = (tokenClient: ActionStepTokenClient) => {
   client.use(authMiddleware(tokenClient))
 
   return {
-    getActions: (page: number = 1, pageSize: number = 50) =>
-      getActions(client, page, pageSize),
-    getAction: (id: number) => getAction(client, id),
+    getActions: (params?: Record<string, unknown>) =>
+      getActions(client, params),
+    getAction: (id: number, params?: Record<string, unknown>) =>
+      getAction(client, id, params),
     updateAction: (id: number, body: ActionsUpdate) =>
       updateAction(client, id, body),
   }
