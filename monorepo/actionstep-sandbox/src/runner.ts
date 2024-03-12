@@ -24,6 +24,16 @@ import { getDataCollectionRecordValues } from './endpoints/getDataCollectionReco
 import { getDataCollectionRecordValue } from './endpoints/getDataCollectionRecordValue'
 import { createDataCollectionRecordValue } from './endpoints/createDataCollectionRecordValue'
 import { updateDataCollectionRecordValue } from './endpoints/updateDataCollectionRecordValue'
+import { getTasks } from './endpoints/getTasks'
+import { getTask } from './endpoints/getTask'
+import { createTask } from './endpoints/createTask'
+import { updateTask } from './endpoints/updateTask'
+import { deleteTask } from './endpoints/deleteTask'
+import { getFileNotes } from './endpoints/getFileNotes'
+import { getFileNote } from './endpoints/getFileNote'
+import { createFileNote } from './endpoints/createFileNote'
+import { updateFileNote } from './endpoints/updateFileNote'
+import { deleteFileNote } from './endpoints/deleteFileNote'
 dotenv.config()
 
 const runner = async (endpointName: string) => {
@@ -87,6 +97,26 @@ const runner = async (endpointName: string) => {
       return createDataCollectionRecordValue(tokenClient)
     case 'updateDataCollectionRecordValue':
       return updateDataCollectionRecordValue(tokenClient)
+    case 'getTasks':
+      return getTasks(tokenClient)
+    case 'getTask':
+      return getTask(tokenClient)
+    case 'createTask':
+      return createTask(tokenClient)
+    case 'updateTask':
+      return updateTask(tokenClient)
+    case 'deleteTask':
+      return deleteTask(tokenClient)
+    case 'getFileNotes':
+      return getFileNotes(tokenClient)
+    case 'getFileNote':
+      return getFileNote(tokenClient)
+    case 'createFileNote':
+      return createFileNote(tokenClient)
+    case 'updateFileNote':
+      return updateFileNote(tokenClient)
+    case 'deleteFileNote':
+      return deleteFileNote(tokenClient)
   }
 }
 

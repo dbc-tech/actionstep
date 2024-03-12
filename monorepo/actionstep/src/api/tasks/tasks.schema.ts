@@ -341,7 +341,7 @@ export namespace Tasks {
          * @example Complete
          * @enum {string}
          */
-        status: 'Incomplete' | 'Complete' | 'Hidden' | 'Deleted'
+        status?: 'Incomplete' | 'Complete' | 'Hidden' | 'Deleted'
         /**
          * @description Priority of the task.
          * @default Normal
@@ -354,7 +354,7 @@ export namespace Tasks {
          * @description The date and time the task is due to be completed.
          * @example "2022-05-02T12:09:00.000Z"
          */
-        dueTimestamp: string
+        dueTimestamp?: string
         /**
          * Format: timestamp
          * @description The date and time the task started.
@@ -517,14 +517,14 @@ export namespace Tasks {
          * @description Name for the task.
          * @example Research.
          */
-        name: string
+        name?: string
         /**
          * @description Current status of the task.
          * @default Incomplete
          * @example Complete
          * @enum {string}
          */
-        status: 'Incomplete' | 'Complete' | 'Hidden' | 'Deleted'
+        status?: 'Incomplete' | 'Complete' | 'Hidden' | 'Deleted'
         /**
          * @description Priority of the task.
          * @default Normal
@@ -537,7 +537,7 @@ export namespace Tasks {
          * @description The date and time the task is due to be completed.
          * @example "2022-05-02T12:09:00.000Z"
          */
-        dueTimestamp: string
+        dueTimestamp?: string
         /**
          * Format: timestamp
          * @description The date and time the task started.
