@@ -60,7 +60,7 @@ export const getDataCollectionRecordValue = async (
 
 export const updateDataCollectionRecordValue = async (
   client: DataCollectionRecordValuesClient,
-  id: number,
+  id: string,
   body: DataCollectionRecordValuesUpdate,
 ) => {
   return client.PUT('/datacollectionrecordvalues/{id}', {
@@ -93,7 +93,7 @@ export const dataCollectionRecordValuesClient = (
       params?: Record<string, unknown>,
     ) => getDataCollectionRecordValue(client, id, params),
     updateDataCollectionRecordValue: (
-      id: number,
+      id: string,
       body: DataCollectionRecordValuesUpdate,
     ) => updateDataCollectionRecordValue(client, id, body),
   }

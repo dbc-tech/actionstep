@@ -5,7 +5,7 @@ export const updateDataCollectionRecordValue = async (
 ) => {
   const { dataCollectionRecordValues: client } = actionStepClient(tokenClient)
 
-  const testDataCollectionRecordValueId = 629
+  const testDataCollectionRecordValueId = 'test-629'
 
   const { data, error } = await client.updateDataCollectionRecordValue(
     testDataCollectionRecordValueId,

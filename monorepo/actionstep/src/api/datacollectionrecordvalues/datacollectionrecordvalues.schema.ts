@@ -60,7 +60,7 @@ export namespace DataCollectionRecordValues {
              * @description Unique identifier for a data collection record value.
              * @example 608
              */
-            id: number
+            id: string
           }
         }
         requestBody: components['requestBodies']['UpdateDataCollectionRecordValue']
