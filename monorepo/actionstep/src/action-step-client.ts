@@ -4,7 +4,9 @@ import {
   dataCollectionRecordValuesClient,
   dataCollectionRecordsClient,
   dataCollectionsClient,
+  fileNotesClient,
   participantsClient,
+  tasksClient,
 } from './api'
 import { ActionStepTokenClient } from './types/action-step-auth.type'
 
@@ -15,7 +17,9 @@ export const actionStepClient = (tokenClient: ActionStepTokenClient) => {
     dataCollections: dataCollectionsClient(tokenClient),
     dataCollectionRecords: dataCollectionRecordsClient(tokenClient),
     dataCollectionRecordValues: dataCollectionRecordValuesClient(tokenClient),
+    fileNotes: fileNotesClient(tokenClient),
     participants: participantsClient(tokenClient),
+    tasks: tasksClient(tokenClient),
   }
 }
 
