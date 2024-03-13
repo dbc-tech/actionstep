@@ -14,60 +14,6 @@ export type ActionParticipantsSuccessResponse =
 export type ActionParticipantsCreate =
   ActionParticipants.components['schemas']['CreateActionParticipants']
 
-export type ActionParticipantsClient = ReturnType<
-  typeof createClient<ActionParticipants.paths>
->
-
-export const getActionParticipants = async (
-  client: ActionParticipantsClient,
-  params?: Record<string, unknown>,
-) => {
-  const query = params || {}
-  return client.GET('/actionparticipants', {
-    params: {
-      query,
-    },
-  })
-}
-
-export const createActionParticipant = async (
-  client: ActionParticipantsClient,
-  body: ActionParticipantsCreate,
-) => {
-  return client.POST('/actionparticipants', {
-    body,
-  })
-}
-
-export const getActionParticipant = async (
-  client: ActionParticipantsClient,
-  id: string,
-  params?: Record<string, unknown>,
-) => {
-  const query = params || {}
-  return client.GET('/actionparticipants/{id}', {
-    params: {
-      path: {
-        id,
-      },
-      query,
-    },
-  })
-}
-
-export const deleteActionParticipant = async (
-  client: ActionParticipantsClient,
-  id: string,
-) => {
-  return client.DELETE('/actionparticipants/{id}', {
-    params: {
-      path: {
-        id,
-      },
-    },
-  })
-}
-
 export const actionParticipantsClient = (
   tokenClient: ActionStepTokenClient,
 ) => {
@@ -78,13 +24,38 @@ export const actionParticipantsClient = (
   client.use(authMiddleware(tokenClient))
 
   return {
-    getActionParticipants: (params?: Record<string, unknown>) =>
-      getActionParticipants(client, params),
-    createActionParticipant: (body: ActionParticipantsCreate) =>
-      createActionParticipant(client, body),
-    getActionParticipant: (id: string, params?: Record<string, unknown>) =>
-      getActionParticipant(client, id, params),
-    deleteActionParticipant: (id: string) =>
-      deleteActionParticipant(client, id),
+    getActionParticipants: (params?: Record<string, unknown>) => {
+      const query = params || {}
+      return client.GET('/actionparticipants', {
+        params: {
+          query,
+        },
+      })
+    },
+    createActionParticipant: (body: ActionParticipantsCreate) => {
+      return client.POST('/actionparticipants', {
+        body,
+      })
+    },
+    getActionParticipant: (id: string, params?: Record<string, unknown>) => {
+      const query = params || {}
+      return client.GET('/actionparticipants/{id}', {
+        params: {
+          path: {
+            id,
+          },
+          query,
+        },
+      })
+    },
+    deleteActionParticipant: (id: string) => {
+      return client.DELETE('/actionparticipants/{id}', {
+        params: {
+          path: {
+            id,
+          },
+        },
+      })
+    },
   }
 }

@@ -13,51 +13,6 @@ export type ActionSuccessResponse =
 
 export type ActionsUpdate = Actions.components['schemas']['Update']
 
-export type ActionsClient = ReturnType<typeof createClient<Actions.paths>>
-
-export const getActions = async (
-  client: ActionsClient,
-  params?: Record<string, unknown>,
-) => {
-  const query = params || {}
-  return client.GET('/actions', {
-    params: {
-      query,
-    },
-  })
-}
-
-export const getAction = async (
-  client: ActionsClient,
-  id: number,
-  params?: Record<string, unknown>,
-) => {
-  const query = params || {}
-  return client.GET('/actions/{id}', {
-    params: {
-      path: {
-        id,
-      },
-      query,
-    },
-  })
-}
-
-export const updateAction = async (
-  client: ActionsClient,
-  id: number,
-  body: ActionsUpdate,
-) => {
-  return client.PUT('/actions/{id}', {
-    params: {
-      path: {
-        id,
-      },
-    },
-    body,
-  })
-}
-
 export const actionsClient = (tokenClient: ActionStepTokenClient) => {
   const client = createClient<Actions.paths>({
     baseUrl: tokenClient.api_url,
@@ -66,11 +21,34 @@ export const actionsClient = (tokenClient: ActionStepTokenClient) => {
   client.use(authMiddleware(tokenClient))
 
   return {
-    getActions: (params?: Record<string, unknown>) =>
-      getActions(client, params),
-    getAction: (id: number, params?: Record<string, unknown>) =>
-      getAction(client, id, params),
-    updateAction: (id: number, body: ActionsUpdate) =>
-      updateAction(client, id, body),
+    getActions: (params?: Record<string, unknown>) => {
+      const query = params || {}
+      return client.GET('/actions', {
+        params: {
+          query,
+        },
+      })
+    },
+    getAction: (id: number, params?: Record<string, unknown>) => {
+      const query = params || {}
+      return client.GET('/actions/{id}', {
+        params: {
+          path: {
+            id,
+          },
+          query,
+        },
+      })
+    },
+    updateAction: (id: number, body: ActionsUpdate) => {
+      return client.PUT('/actions/{id}', {
+        params: {
+          path: {
+            id,
+          },
+        },
+        body,
+      })
+    },
   }
 }

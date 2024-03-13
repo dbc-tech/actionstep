@@ -17,62 +17,6 @@ export type DataCollectionRecordValuesCreate =
 export type DataCollectionRecordValuesUpdate =
   DataCollectionRecordValues.components['schemas']['UpdateDataCollectionRecordValues']
 
-export type DataCollectionRecordValuesClient = ReturnType<
-  typeof createClient<DataCollectionRecordValues.paths>
->
-
-export const getDataCollectionRecordValues = async (
-  client: DataCollectionRecordValuesClient,
-  params?: Record<string, unknown>,
-) => {
-  const query = params || {}
-  return client.GET('/datacollectionrecordvalues', {
-    params: {
-      query,
-    },
-  })
-}
-
-export const createDataCollectionRecordValues = async (
-  client: DataCollectionRecordValuesClient,
-  body: DataCollectionRecordValuesCreate,
-) => {
-  return client.POST('/datacollectionrecordvalues', {
-    body,
-  })
-}
-
-export const getDataCollectionRecordValue = async (
-  client: DataCollectionRecordValuesClient,
-  id: string,
-  params?: Record<string, unknown>,
-) => {
-  const query = params || {}
-  return client.GET('/datacollectionrecordvalues/{id}', {
-    params: {
-      path: {
-        id,
-      },
-      query,
-    },
-  })
-}
-
-export const updateDataCollectionRecordValue = async (
-  client: DataCollectionRecordValuesClient,
-  id: string,
-  body: DataCollectionRecordValuesUpdate,
-) => {
-  return client.PUT('/datacollectionrecordvalues/{id}', {
-    params: {
-      path: {
-        id,
-      },
-    },
-    body,
-  })
-}
-
 export const dataCollectionRecordValuesClient = (
   tokenClient: ActionStepTokenClient,
 ) => {
@@ -83,18 +27,47 @@ export const dataCollectionRecordValuesClient = (
   client.use(authMiddleware(tokenClient))
 
   return {
-    getDataCollectionRecordValues: (params?: Record<string, unknown>) =>
-      getDataCollectionRecordValues(client, params),
+    getDataCollectionRecordValues: (params?: Record<string, unknown>) => {
+      const query = params || {}
+      return client.GET('/datacollectionrecordvalues', {
+        params: {
+          query,
+        },
+      })
+    },
     createDataCollectionRecordValues: (
       body: DataCollectionRecordValuesCreate,
-    ) => createDataCollectionRecordValues(client, body),
+    ) => {
+      return client.POST('/datacollectionrecordvalues', {
+        body,
+      })
+    },
     getDataCollectionRecordValue: (
       id: string,
       params?: Record<string, unknown>,
-    ) => getDataCollectionRecordValue(client, id, params),
+    ) => {
+      const query = params || {}
+      return client.GET('/datacollectionrecordvalues/{id}', {
+        params: {
+          path: {
+            id,
+          },
+          query,
+        },
+      })
+    },
     updateDataCollectionRecordValue: (
       id: string,
       body: DataCollectionRecordValuesUpdate,
-    ) => updateDataCollectionRecordValue(client, id, body),
+    ) => {
+      return client.PUT('/datacollectionrecordvalues/{id}', {
+        params: {
+          path: {
+            id,
+          },
+        },
+        body,
+      })
+    },
   }
 }

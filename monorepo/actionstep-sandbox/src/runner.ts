@@ -34,6 +34,9 @@ import { getFileNote } from './endpoints/getFileNote'
 import { createFileNote } from './endpoints/createFileNote'
 import { updateFileNote } from './endpoints/updateFileNote'
 import { deleteFileNote } from './endpoints/deleteFileNote'
+import { createFile } from './endpoints/createFile'
+import { getStepMessages } from './endpoints/getStepMessages'
+import { getStepMessage } from './endpoints/getStepMessage'
 dotenv.config()
 
 const runner = async (endpointName: string) => {
@@ -117,6 +120,12 @@ const runner = async (endpointName: string) => {
       return updateFileNote(tokenClient)
     case 'deleteFileNote':
       return deleteFileNote(tokenClient)
+    case 'createFile':
+      return createFile(tokenClient)
+    case 'getStepMessages':
+      return getStepMessages(tokenClient)
+    case 'getStepMessage':
+      return getStepMessage(tokenClient)
   }
 }
 
