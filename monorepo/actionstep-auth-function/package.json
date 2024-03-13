@@ -1,6 +1,6 @@
 {
   "name": "@dbc-tech/actionstep-auth-function",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "description": "ActionStep API integration - Azure Function (Auth)",
   "repository": "https://github.com/dbc-tech/actionstep",
   "author": "DBC",
