@@ -1,4 +1,5 @@
 import { ActionStepTokenStore } from './action-step-token-store.type'
+import { Logger } from './logger.type'
 
 export type ActionStepAuthConfig = {
   client_id: string
@@ -15,4 +16,5 @@ export type ActionStepAuthConfig = {
    */
   expirationWindowSeconds?: number
   store?: ActionStepTokenStore
+  logger?: Logger
 }

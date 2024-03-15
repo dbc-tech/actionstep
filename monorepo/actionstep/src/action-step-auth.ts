@@ -14,6 +14,7 @@ export const actionStepAuth = (
     token_url,
     redirect_uri,
     store,
+    logger,
   } = config
   const authorizeURL = new URL(authorize_url)
   const tokenURL = new URL(token_url)
@@ -42,14 +43,22 @@ export const actionStepAuth = (
       })
     },
     callback: async (code: string): Promise<ActionStepToken> => {
+      logger?.debug('Callback with code:', code)
       accessToken = await authCode.getToken({
         code,
         redirect_uri,
         scope,
       })
+      logger?.debug('Got accessToken:', accessToken)
 
       const actionStepToken = toActionStepToken(accessToken.token)
-      if (store) await store.set(actionStepToken)
+      logger?.debug('Converted to actionStepToken:', actionStepToken)
+      if (store) {
+        await store.set(actionStepToken)
+        logger?.debug('Successfully stored token')
+      } else {
+        logger?.debug('Skipped token storage')
+      }
 
       return actionStepToken
     },

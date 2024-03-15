@@ -24,7 +24,10 @@ export const createAuth = (
         Promise.resolve(context.extraOutputs.set(blobOutput, token)),
     },
     api_url: process.env.ACTIONSTEP_API_URL,
+    logger: context,
   }
+
+  context.debug('ActionStepAuthConfig:', JSON.stringify(config))
 
   return actionStepAuth(config)
 }
