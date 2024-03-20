@@ -13,7 +13,9 @@ export namespace Participants {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedParticipants']
+              'application/json':
+                | components['schemas']['PagedParticipants']
+                | components['schemas']['SingleParticipant']
             }
           }
         }
