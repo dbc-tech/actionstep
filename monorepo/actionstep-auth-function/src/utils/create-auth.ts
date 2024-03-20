@@ -17,6 +17,7 @@ export const createAuth = (
     client_secret: process.env.ACTIONSTEP_CLIENT_SECRET,
     redirect_uri: url.origin + url.pathname,
     token_url: process.env.ACTIONSTEP_TOKEN_URL,
+    scope: process.env.ACTIONSTEP_SCOPE,
     store: {
       get: () =>
         Promise.resolve(<ActionStepToken>context.extraInputs.get(blobInput)),
