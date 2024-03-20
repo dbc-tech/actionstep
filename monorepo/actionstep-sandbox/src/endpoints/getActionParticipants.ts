@@ -11,7 +11,12 @@ export const getActionParticipants = async (
   })
   if (error) console.error('error:', error)
   else {
-    for (const participant of data.actionparticipants) {
+    const actionparticipants =
+      data.actionparticipants instanceof Array
+        ? data.actionparticipants
+        : [data.actionparticipants]
+
+    for (const participant of actionparticipants) {
       console.log('get action participant:', {
         id: participant.id,
         number: participant.participantNumber,

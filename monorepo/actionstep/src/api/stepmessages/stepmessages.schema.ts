@@ -13,7 +13,9 @@ export namespace StepMessages {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedStepMessage']
+              'application/json':
+                | components['schemas']['PagedStepMessage']
+                | components['schemas']['SingleStepMessage']
             }
           }
         }

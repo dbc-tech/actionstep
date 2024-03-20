@@ -9,7 +9,9 @@ export const getFileNotes = async (tokenClient: ActionStepTokenClient) => {
   })
   if (error) console.error('error:', error)
   else {
-    for (const filenote of data.filenotes) {
+    const filenotes =
+      data.filenotes instanceof Array ? data.filenotes : [data.filenotes]
+    for (const filenote of filenotes) {
       console.log('get filenote:', {
         id: filenote.id,
         text: filenote.text,

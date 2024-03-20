@@ -10,7 +10,11 @@ export const getDataCollectionRecords = async (
   })
   if (error) console.error('error:', error)
   else {
-    for (const datacollectionrecord of data.datacollectionrecords) {
+    const datacollectionrecords =
+      data.datacollectionrecords instanceof Array
+        ? data.datacollectionrecords
+        : [data.datacollectionrecords]
+    for (const datacollectionrecord of datacollectionrecords) {
       console.log('get datacollectionrecord:', {
         id: datacollectionrecord.id,
         links: datacollectionrecord.links,

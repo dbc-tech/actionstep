@@ -13,7 +13,9 @@ export namespace Tasks {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedTasks']
+              'application/json':
+                | components['schemas']['PagedTasks']
+                | components['schemas']['SingleTask']
             }
           }
         }

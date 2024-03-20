@@ -10,7 +10,9 @@ export const getActions = async (tokenClient: ActionStepTokenClient) => {
   })
   if (error) console.error('error:', error)
   else {
-    for (const action of data.actions) {
+    const actions =
+      data.actions instanceof Array ? data.actions : [data.actions]
+    for (const action of actions) {
       console.log('get action:', {
         id: action.id,
         name: action.name,

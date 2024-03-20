@@ -13,7 +13,9 @@ export namespace Actions {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedActions']
+              'application/json':
+                | components['schemas']['PagedActions']
+                | components['schemas']['SingleAction']
             }
           }
         }

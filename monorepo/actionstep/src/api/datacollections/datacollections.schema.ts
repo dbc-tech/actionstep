@@ -13,7 +13,9 @@ export namespace DataCollections {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedDataCollections']
+              'application/json':
+                | components['schemas']['PagedDataCollections']
+                | components['schemas']['SingleDataCollection']
             }
           }
         }

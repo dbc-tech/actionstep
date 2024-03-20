@@ -13,7 +13,9 @@ export namespace FileNotes {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedFileNotes']
+              'application/json':
+                | components['schemas']['PagedFileNotes']
+                | components['schemas']['SingleFileNote']
             }
           }
         }

@@ -13,7 +13,9 @@ export namespace DataCollectionRecordValues {
           /** @description OK. */
           200: {
             content: {
-              'application/json': components['schemas']['PagedDataCollectionRecordValues']
+              'application/json':
+                | components['schemas']['PagedDataCollectionRecordValues']
+                | components['schemas']['SingleDataCollectionRecordValues']
             }
           }
         }
