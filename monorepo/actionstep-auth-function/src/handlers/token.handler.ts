@@ -11,7 +11,8 @@ export async function tokenHandler(
 ): Promise<HttpResponseInit> {
   const auth = createAuth(request, context)
 
+  const forceRefresh = request.query.has('forceRefresh')
   return {
-    jsonBody: await auth.token(),
+    jsonBody: await auth.token(forceRefresh),
   }
 }

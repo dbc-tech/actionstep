@@ -1,4 +1,4 @@
-import { actionStepLegacyTokenClient } from '@dbc-tech/actionstep'
+import { actionStepTokenClient } from '@dbc-tech/actionstep'
 import * as dotenv from 'dotenv'
 import { getActions } from './endpoints/getActions'
 import { getAction } from './endpoints/getAction'
@@ -42,14 +42,14 @@ dotenv.config()
 const runner = async (endpointName: string) => {
   console.log('running:', endpointName)
 
-  // const tokenClient = actionStepTokenClient(
-  //   process.env.ACTIONSTEP_TOKEN_URL,
-  //   process.env.ACTIONSTEP_API_URL,
-  // )
-  const tokenClient = actionStepLegacyTokenClient(
+  const tokenClient = actionStepTokenClient(
     process.env.ACTIONSTEP_TOKEN_URL,
     process.env.ACTIONSTEP_API_URL,
   )
+  // const tokenClient = actionStepLegacyTokenClient(
+  //   process.env.ACTIONSTEP_TOKEN_URL,
+  //   process.env.ACTIONSTEP_API_URL,
+  // )
 
   switch (endpointName) {
     case 'getActions':

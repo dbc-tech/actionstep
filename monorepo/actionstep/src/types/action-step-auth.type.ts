@@ -6,7 +6,7 @@ export type ActionStepAuthorizeClient = {
 }
 
 export type ActionStepTokenClient = {
-  token: () => Promise<ActionStepToken>
+  token: (forceRefresh?: boolean) => Promise<ActionStepToken>
   api_url: Readonly<string>
 }
 

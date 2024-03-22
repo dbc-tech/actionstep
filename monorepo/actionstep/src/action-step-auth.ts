@@ -62,12 +62,12 @@ export const actionStepAuth = (
 
       return actionStepToken
     },
-    token: async (): Promise<ActionStepToken> => {
+    token: async (forceRefresh?: boolean): Promise<ActionStepToken> => {
       if (store) {
         accessToken = authCode.createToken(await store.get())
       }
 
-      if (accessToken.expired()) {
+      if (accessToken.expired() || forceRefresh) {
         accessToken = await accessToken.refresh({ scope })
         if (store) await store.set(toActionStepToken(accessToken.token))
       }
