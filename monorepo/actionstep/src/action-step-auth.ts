@@ -63,6 +63,7 @@ export const actionStepAuth = (
       return actionStepToken
     },
     token: async (forceRefresh?: boolean): Promise<ActionStepToken> => {
+      logger?.debug(`Get token (forceRefresh: ${forceRefresh})`)
       if (store) {
         accessToken = authCode.createToken(await store.get())
       }
