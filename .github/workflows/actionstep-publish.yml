@@ -24,6 +24,9 @@ jobs:
       - run: npm publish -w actionstep
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm publish -w actionstep-auth
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: npm publish -w actionstep-auth-function
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
