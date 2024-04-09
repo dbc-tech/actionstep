@@ -19,7 +19,6 @@
     "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
   "dependencies": {
-    "got-cjs": "^12.5.4",
     "openapi-fetch": "^0.9.3"
   },
   "devDependencies": {

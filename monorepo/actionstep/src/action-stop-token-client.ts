@@ -1,4 +1,3 @@
-import got from 'got-cjs'
 import { ActionStepToken, ActionStepTokenClient } from './types'
 
 export const actionStepTokenClient = (
@@ -7,7 +6,8 @@ export const actionStepTokenClient = (
 ): ActionStepTokenClient => {
   return {
     token: async () => {
-      return await got.get(tokenUrl).json<ActionStepToken>()
+      const response = await fetch(tokenUrl)
+      return (await response.json()) as ActionStepToken
     },
     api_url: apiUrl,
   }
@@ -36,7 +36,8 @@ export const actionStepLegacyTokenClient = (
 ): ActionStepTokenClient => {
   return {
     token: async () => {
-      const legacyToken = await got.get(tokenUrl).json<LegacyTokenformat>()
+      const response = await fetch(tokenUrl)
+      const legacyToken = (await response.json()) as LegacyTokenformat
       return {
         access_token: legacyToken.data.actionstep.access_token,
         api_endpoint: legacyToken.data.actionstep.api_endpoint,
