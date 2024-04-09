@@ -1,5 +1,8 @@
-import { Token } from 'simple-oauth2'
 import { ActionStepToken } from '../types/action-step-token.type'
+
+export interface Token {
+  [x: string]: unknown
+}
 
 export const toActionStepToken = (token: Token): ActionStepToken => {
   return {
