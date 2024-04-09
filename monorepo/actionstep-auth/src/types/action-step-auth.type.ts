@@ -1,4 +1,4 @@
-import { ActionStepToken } from './action-step-token.type'
+import { ActionStepToken } from '@dbc-tech/actionstep'
 
 export type ActionStepAuthorizeClient = {
   authorizeUrl: () => string

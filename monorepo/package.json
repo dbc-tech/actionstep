@@ -2,8 +2,9 @@
     "name": "@dbc-tech/actionstep-monorepo",
     "version": "0.0.0",
     "workspaces": [
-      "actionstep-auth-function",
       "actionstep",
+      "actionstep-auth",
+      "actionstep-auth-function",
       "actionstep-sandbox"
     ],
     "description": "ActionStep API integration",

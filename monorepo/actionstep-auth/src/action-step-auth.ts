@@ -1,8 +1,8 @@
 import { AccessToken, AuthorizationCode } from 'simple-oauth2'
 import { ActionStepAuthConfig } from './types/action-step-auth-config.type'
 import { ActionStepAuth } from './types/action-step-auth.type'
-import { ActionStepToken } from './types/action-step-token.type'
-import { toActionStepToken } from './utils/to-action-step-token'
+import { ActionStepToken } from '@dbc-tech/actionstep'
+import { toActionStepToken } from './utils'
 
 export const actionStepAuth = (
   config: ActionStepAuthConfig,

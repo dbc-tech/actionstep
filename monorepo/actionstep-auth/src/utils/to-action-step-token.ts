@@ -1,4 +1,4 @@
-import { ActionStepToken } from '../types/action-step-token.type'
+import { ActionStepToken } from '@dbc-tech/actionstep'
 
 export interface Token {
   [x: string]: unknown

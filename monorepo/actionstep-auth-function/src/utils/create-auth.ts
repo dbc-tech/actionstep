@@ -1,10 +1,7 @@
 import { HttpRequest, InvocationContext } from '@azure/functions'
 import { blobInput, blobOutput } from '../io/blob.io'
-import {
-  actionStepAuth,
-  ActionStepAuthConfig,
-  ActionStepToken,
-} from '@dbc-tech/actionstep'
+import { actionStepAuth, ActionStepAuthConfig } from '@dbc-tech/actionstep-auth'
+import { ActionStepToken } from '@dbc-tech/actionstep'
 
 export const createAuth = (
   request: HttpRequest,

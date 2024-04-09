@@ -10,7 +10,7 @@ import {
   stepMessagesClient,
   tasksClient,
 } from './api'
-import { ActionStepTokenClient } from './types/action-step-auth.type'
+import { ActionStepTokenClient } from './types/action-step-token-client.type'
 import { buildURL } from './utils'
 
 export type ApiResponse<T> = {

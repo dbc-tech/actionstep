@@ -1,4 +1,4 @@
-import { ActionStepTokenStore } from './action-step-token-store.type'
+import { ActionStepTokenStore } from '@dbc-tech/actionstep'
 import { Logger } from './logger.type'
 
 export type ActionStepAuthConfig = {
