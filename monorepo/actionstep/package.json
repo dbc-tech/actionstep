@@ -19,7 +19,6 @@
     "build": "rimraf ./dist && tsc --build tsconfig.build.json"
   },
   "dependencies": {
-    "@dbc-tech/http-kit": "^2.0.0",
     "got-cjs": "^12.5.4",
     "openapi-fetch": "^0.9.3"
   },

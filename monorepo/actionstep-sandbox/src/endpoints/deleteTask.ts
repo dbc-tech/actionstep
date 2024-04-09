@@ -3,7 +3,7 @@ import { ActionStepTokenClient, actionStepClient } from '@dbc-tech/actionstep'
 export const deleteTask = async (tokenClient: ActionStepTokenClient) => {
   const { tasks: client } = actionStepClient(tokenClient)
 
-  const testTaskId = 2015790
+  const testTaskId = 2042792
 
   const response = await client.deleteTask(testTaskId)
   if (response.error) console.error('error:', response.error)
