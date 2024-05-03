@@ -76,7 +76,9 @@ export const actionStepAuth = (
 
       if (accessToken.expired() || forceRefresh) {
         logger?.debug(`Token is expired. Refreshing...`)
-        accessToken = await accessToken.refresh({ scope })
+        accessToken = scope
+          ? await accessToken.refresh({ scope })
+          : await accessToken.refresh()
         logger?.debug(`Storing refreshed access token ${accessToken}`)
         if (store) {
           const storedToken = toActionStepToken(accessToken.token)
