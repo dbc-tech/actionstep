@@ -65,14 +65,31 @@ export const actionStepAuth = (
     token: async (forceRefresh?: boolean): Promise<ActionStepToken> => {
       logger?.debug(`Get token (forceRefresh: ${forceRefresh})`)
       if (store) {
-        accessToken = authCode.createToken(await store.get())
+        logger?.debug(`Getting token from store`)
+        const storedToken = await store.get()
+        logger?.debug(`Retrieved token: ${storedToken}`)
+        logger?.debug(`Parsed retrieved token: ${JSON.stringify(storedToken)}`)
+        accessToken = authCode.createToken(storedToken)
+        logger?.debug(`Created access token: ${accessToken}`)
+        logger?.debug(`Parsed access token: ${JSON.stringify(accessToken)}`)
       }
 
       if (accessToken.expired() || forceRefresh) {
+        logger?.debug(`Token is expired. Refreshing...`)
         accessToken = await accessToken.refresh({ scope })
-        if (store) await store.set(toActionStepToken(accessToken.token))
+        logger?.debug(`Storing refreshed access token ${accessToken}`)
+        if (store) {
+          const storedToken = toActionStepToken(accessToken.token)
+          logger?.debug(`Created token for storage: ${storedToken}`)
+          logger?.debug(
+            `Parsed token for storage: ${JSON.stringify(storedToken)}`,
+          )
+          await store.set(storedToken)
+        }
+        logger?.debug(
+          `Successfully stored refreshed access token ${accessToken}`,
+        )
       }
-
       return toActionStepToken(accessToken.token)
     },
     api_url: config.api_url,
