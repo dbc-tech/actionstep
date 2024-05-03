@@ -44,11 +44,24 @@ export const actionStepAuth = (
     },
     callback: async (code: string): Promise<ActionStepToken> => {
       logger?.debug('Callback with code:', code)
-      accessToken = await authCode.getToken({
-        code,
-        redirect_uri,
-        scope,
-      })
+      try {
+        accessToken = await authCode.getToken({
+          code,
+          redirect_uri,
+          scope,
+        })
+      } catch (error) {
+        if (error instanceof Error) {
+          logger?.error(
+            'Error obtaining token from code:',
+            JSON.stringify(error),
+          )
+        } else {
+          logger?.error('Error obtaining token from code:', error)
+        }
+        throw error
+      }
+
       logger?.debug('Got accessToken:', accessToken)
 
       const actionStepToken = toActionStepToken(accessToken.token)
@@ -76,9 +89,17 @@ export const actionStepAuth = (
 
       if (accessToken.expired() || forceRefresh) {
         logger?.debug(`Token is expired. Refreshing...`)
-        accessToken = scope
-          ? await accessToken.refresh({ scope })
-          : await accessToken.refresh()
+        try {
+          accessToken = await accessToken.refresh({ scope })
+        } catch (error) {
+          if (error instanceof Error) {
+            logger?.error('Error refreshing token:', JSON.stringify(error))
+          } else {
+            logger?.error('Error refreshing token:', error)
+          }
+          throw error
+        }
+
         logger?.debug(`Storing refreshed access token ${accessToken}`)
         if (store) {
           const storedToken = toActionStepToken(accessToken.token)
