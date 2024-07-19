@@ -1,6 +1,6 @@
 {
   "name": "@dbc-tech/actionstep-auth",
-  "version": "1.30.0",
+  "version": "1.31.0",
   "description": "ActionStep API integration",
   "repository": "https://github.com/dbc-tech/actionstep",
   "author": "DBC",
