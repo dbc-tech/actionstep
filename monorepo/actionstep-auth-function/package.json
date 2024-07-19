@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@azure/functions": "^4.0.0",
-    "simple-oauth2": "^5.0.0",
+    "simple-oauth2": "^5.1.0",
     "@dbc-tech/actionstep-auth": "*"
   },
   "devDependencies": {
