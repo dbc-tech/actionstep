@@ -4,7 +4,7 @@ export const createTask = async (tokenClient: ActionStepTokenClient) => {
   const { tasks: client } = actionStepClient(tokenClient)
 
   const testActionId = 68330 // or 84407
-  const testAssigneeId = 113702
+  const testAssigneeId = 1
 
   const { data, error } = await client.createTask({
     tasks: {

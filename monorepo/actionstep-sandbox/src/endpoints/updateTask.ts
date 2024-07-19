@@ -3,7 +3,7 @@ import { ActionStepTokenClient, actionStepClient } from '@dbc-tech/actionstep'
 export const updateTask = async (tokenClient: ActionStepTokenClient) => {
   const { tasks: client } = actionStepClient(tokenClient)
 
-  const testTaskId = 2015790
+  const testTaskId = 1961747
 
   const { data, error } = await client.updateTask(testTaskId, {
     tasks: {
