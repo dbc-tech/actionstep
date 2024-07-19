@@ -54,7 +54,8 @@ export const actionStepAuth = (
         if (error instanceof Error) {
           logger?.error(
             'Error obtaining token from code:',
-            JSON.stringify(error),
+            error.message,
+            error.stack,
           )
         } else {
           logger?.error('Error obtaining token from code:', error)
@@ -93,7 +94,7 @@ export const actionStepAuth = (
           accessToken = await accessToken.refresh({ scope })
         } catch (error) {
           if (error instanceof Error) {
-            logger?.error('Error refreshing token:', JSON.stringify(error))
+            logger?.error('Error refreshing token:', error.message, error.stack)
           } else {
             logger?.error('Error refreshing token:', error)
           }
