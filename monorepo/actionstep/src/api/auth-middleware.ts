@@ -3,16 +3,16 @@ import { ActionStepTokenClient } from '../types'
 
 export const authMiddleware = (auth: ActionStepTokenClient): Middleware => {
   return {
-    async onRequest(req) {
+    async onRequest({ request }) {
       const token = await auth.token()
-      req.headers.set('Authorization', `Bearer ${token.access_token}`)
-      req.headers.set('Content-Type', 'application/vnd.api+json')
-      req.headers.set('Accept', 'application/vnd.api+json')
+      request.headers.set('Authorization', `Bearer ${token.access_token}`)
+      request.headers.set('Content-Type', 'application/vnd.api+json')
+      request.headers.set('Accept', 'application/vnd.api+json')
 
-      return req
+      return request
     },
-    async onResponse(res) {
-      return res
+    async onResponse({ response }) {
+      return response
     },
   }
 }
